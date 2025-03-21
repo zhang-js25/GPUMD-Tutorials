@@ -1,8 +1,0 @@
-potential		/home/nlab/xinwu/GPUMD-3.9.5/potentials/tersoff/Graphene_Lindsay_2010_modified.txt 0
-velocity 		1e-10
-ensemble 		nve
-
-dump_position 	10000
-dump_velocity   10000
-time_step 		1
-run			    100000
