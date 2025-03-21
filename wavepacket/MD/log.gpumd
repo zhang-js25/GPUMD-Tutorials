@@ -1,0 +1,106 @@
+
+***************************************************************
+*                 Welcome to use GPUMD                        *
+*     (Graphics Processing Units Molecular Dynamics)          *
+*                    Version 3.9.5                            *
+*              This is the gpumd executable                   *
+***************************************************************
+
+
+---------------------------------------------------------------
+Compiling options:
+---------------------------------------------------------------
+
+DEBUG is off: Use different PRNG seeds for different runs.
+
+---------------------------------------------------------------
+GPU information:
+---------------------------------------------------------------
+
+number of GPUs = 1
+Device id:                   0
+    Device name:             NVIDIA GeForce RTX 4090
+    Compute capability:      8.9
+    Amount of global memory: 23.5447 GB
+    Number of SMs:           128
+
+---------------------------------------------------------------
+Started running GPUMD.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Started initializing positions and related parameters.
+---------------------------------------------------------------
+
+Number of atoms is 200000.
+Use periodic boundary conditions along x.
+Use periodic boundary conditions along y.
+Use free boundary conditions along z.
+Use orthogonal box.
+Box lengths are
+    Lx =     1.2470765814e+02 A
+    Ly =     4.3200000000e+03 A
+    Lz =     3.3500000000e+00 A
+Do not specify initial velocities here.
+Have no grouping method.
+There is only one atom type.
+    200000 atoms of type 0.
+Initialized velocities with default T = 300 K.
+
+---------------------------------------------------------------
+Finished initializing positions and related parameters.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Started executing the commands in run.in.
+---------------------------------------------------------------
+
+Use Tersoff-1989 (1-element) potential with element(s): C
+Initialized velocities with input T = 1e-10 K.
+Use NVE ensemble for this run.
+Dump position.
+    every 10000 steps.
+Dump velocity.
+    every 10000 steps.
+
+---------------------------------------------------------------
+Warning: Starting from GPUMD-v3.4, the velocity data in velocity.out will be in units of Angstrom/fs
+         Previously they are in units of Angstrom/ps.
+         The reason for this change is to make it consistent with the extendend XYZ format.
+---------------------------------------------------------------
+
+Time step for this run is 1 fs.
+Run 100000 steps.
+    10000 steps completed.
+    20000 steps completed.
+    30000 steps completed.
+    40000 steps completed.
+    50000 steps completed.
+    60000 steps completed.
+    70000 steps completed.
+    80000 steps completed.
+    90000 steps completed.
+    100000 steps completed.
+
+---------------------------------------------------------------
+Time used for this run = 125.301 second.
+Speed of this run = 1.59616e+08 atom*step/second.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Finished executing the commands in run.in.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Time used = 125.496651 s.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Finished running GPUMD.
+---------------------------------------------------------------
+
