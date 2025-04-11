@@ -4,25 +4,25 @@ This repo contains various tutorials and examples using the [GPUMD package](http
 ## List of examples
 
 
-| folder                                     | creator       | potential | description                                        |
-| ---------------------------------------    | ------------- | --------- | ---------------------------------------------------|
-| examples/01_Carbon_examples_for_JCP_2022_paper      | Penghua Ying  | NEP       | Some examples for Ref. [1] |
-| examples/02_Carbon_density_of_states                | Zheyong Fan   | Tersoff   | Phonon density of states of graphene |
-| examples/03_Carbon_thermal_transport_emd            | Zheyong Fan   | Tersoff   | Thermal transport in graphene from EMD |
-| examples/04_Carbon_thermal_transport_nemd_and_hnemd | Zheyong Fan   | Tersoff   | Thermal transport in graphene from NEMD and NEMD |
-| examples/05_Carbon_phonon_vibration_viewer          | Ting Liang    | Tersoff   | Visualizing the phonon modes in a type of diamond nanowire. |
-| examples/06_Silicon_phonon_dispersion               | Zheyong Fan   | Tersoff   | Phonon dispersions of silicon.  |
-| examples/07_Silicon_thermal_expansion               | Zheyong Fan   | Tersoff   | Thermal expansion of silicon based on classical MD. |
-| examples/08_Silicon_melt                            | Zheyong Fan   | NEP       | Melting point of silicon from two-phase method. |
-| examples/09_Silicon_diffusion                       | Zheyong Fan   | NEP       | Diffusion coefficient of liquid silicon from VAC and MSD. |
-| examples/10_Silicon_viscosity                       | Zheyong Fan   | NEP       | Viscosity of liquid silicon from Green-Kubo. |
-| examples/11_NEP_potential_PbTe                      | Zheyong Fan   | NEP       | Train a NEP potential model for PbTe. |
-| examples/12_NEP_dipole_QM7B                         | Nan Xu        | NEP       | Train a NEP dipole model for QM7B database. |
-| examples/13_NEP_polarizability_QM7B                 | Nan Xu        | NEP       | Train a NEP polarizability model for QM7B database. |
-| examples/14_DP                                      | Ke Xu         | DP        | Examples demonstrating the use of DP models in GPUMD. |
-| examples/15_Infrared                                | Nan Xu        | NEP       | Calculating infrared spectrum using dipole autocorrelation function. |
-| examples/16_Deposition                              | Shiyun Xiong  | NEP       | Creation of amorphous Si structures through atom deposition. |
-| examples/17_Wavepacket                              | Xin Wu        | Tersoff   | Phonon wavepacket simulation. |
+| folder                                     | creator       | description                                        |
+| ---------------------------------------    | ------------- | ---------------------------------------------------|
+| [examples/01_Carbon_examples_for_JCP_2022_paper](01_Carbon_examples_for_JCP_2022_paper)      | Penghua Ying | Some examples for Ref. [1] |
+| [examples/02_Carbon_density_of_states](02_Carbon_density_of_states)                | Zheyong Fan   | Phonon density of states of graphene |
+| [examples/03_Carbon_thermal_transport_emd](03_Carbon_thermal_transport_emd)            | Zheyong Fan  | Thermal transport in graphene from EMD |
+| [examples/04_Carbon_thermal_transport_nemd_and_hnemd](04_Carbon_thermal_transport_nemd_and_hnemd) | Zheyong Fan  | Thermal transport in graphene from NEMD and NEMD |
+| [examples/05_Carbon_phonon_vibration_viewer](05_Carbon_phonon_vibration_viewer)          | Ting Liang    | Visualizing the phonon modes in a type of diamond nanowire. |
+| [examples/06_Silicon_phonon_dispersion](06_Silicon_phonon_dispersion)               | Zheyong Fan    | Phonon dispersions of silicon.  |
+| [examples/07_Silicon_thermal_expansion](07_Silicon_thermal_expansion)               | Zheyong Fan      | Thermal expansion of silicon based on classical MD. |
+| [examples/08_Silicon_melt](08_Silicon_melt)                            | Zheyong Fan   |  Melting point of silicon from two-phase method. |
+| [examples/09_Silicon_diffusion](09_Silicon_diffusion)                      | Zheyong Fan   |  Diffusion coefficient of liquid silicon from VAC and MSD. |
+| [examples/10_Silicon_viscosity](10_Silicon_viscosity)                       | Zheyong Fan   |  Viscosity of liquid silicon from Green-Kubo. |
+| [examples/11_NEP_potential_PbTe](11_NEP_potential_PbTe)                      | Zheyong Fan   |  Train a NEP potential model for PbTe. |
+| [examples/12_NEP_dipole_QM7B](12_NEP_dipole_QM7B)                         | Nan Xu        |  Train a NEP dipole model for QM7B database. |
+| [examples/13_NEP_polarizability_QM7B](13_NEP_polarizability_QM7B)                 | Nan Xu        | Train a NEP polarizability model for QM7B database. |
+| [examples/14_DP](14_DP)                                      | Ke Xu         |  Examples demonstrating the use of DP models in GPUMD. |
+| [examples/15_Infrared](5_Infrared)                                | Nan Xu        |  Calculating infrared spectrum using dipole autocorrelation function. |
+| [examples/16_Deposition](16_Deposition)                              | Shiyun Xiong  |  Creation of amorphous Si structures through atom deposition. |
+| [examples/17_Wavepacket](17_Wavepacket)                              | Xin Wu        |  Phonon wavepacket simulation. |
 
 
 ## How to run the examples?
