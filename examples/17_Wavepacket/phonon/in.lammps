@@ -1,0 +1,23 @@
+
+boundary p p p
+units        metal
+atom_style   atomic
+box tilt large
+timestep 0.0005
+#neighbor 2.0 nsq
+neigh_modify every 1 delay 5 check yes
+
+
+#Gr.data
+read_data    Gr.dat
+
+mass  1 12.0107
+ 
+
+pair_style   tersoff
+pair_coeff   * * C.tersoff C
+
+
+
+
+# phonolammps in.lammps --dim 2 2 2 -c POSCAR_unitcell
