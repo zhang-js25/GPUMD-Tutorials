@@ -23,6 +23,7 @@ This repo contains various tutorials and examples using the [GPUMD package](http
 | [15_Infrared](examples/5_Infrared)                                | Nan Xu        |  Calculating infrared spectrum using dipole autocorrelation function. |
 | [16_Deposition](examples/16_Deposition)                              | Shiyun Xiong  |  Creation of amorphous Si structures through atom deposition. |
 | [17_Wavepacket](examples/17_Wavepacket)                              | Xin Wu        |  Phonon wavepacket simulation. |
+| [18_FCP_check_force](examples/18_FCP_check_force)        | Zheyong Fan        |  Demonstration of the usage of the force constant potential (FCP) |
 
 
 ## How to run the examples?
