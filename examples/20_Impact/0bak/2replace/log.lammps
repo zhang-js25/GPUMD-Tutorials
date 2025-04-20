@@ -1,0 +1,9 @@
+LAMMPS (29 Aug 2024 - Update 1)
+#---------------------------------------------------------
+clear
+variable  output  string   OUT
+shell     mkdir   ${output}
+shell     mkdir   OUT
+log       ./${output}/log.${output}
+log       ./OUT/log.${output}
+log       ./OUT/log.OUT

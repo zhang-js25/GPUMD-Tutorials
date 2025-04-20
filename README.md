@@ -24,7 +24,9 @@ This repo contains various tutorials and examples using the [GPUMD package](http
 | [16_Deposition](examples/16_Deposition)                              | Shiyun Xiong  |  Creation of amorphous Si structures through atom deposition. |
 | [17_Wavepacket](examples/17_Wavepacket)                              | Xin Wu        |  Phonon wavepacket simulation. |
 | [18_FCP_check_force](examples/18_FCP_check_force)        | Zheyong Fan        |  Demonstration of the usage of the force constant potential (FCP) |
-| [19_Solid_Liquid_Coexistence_method](examples/19_Solid_Liquid_Coexistence_method)        | Rui Zhao        |  solid-liquid coexistence method for melting point calculation |
+| [19_Solid_Liquid_Coexistence_method](examples/19_Solid_Liquid_Coexistence_method)        | Rui Zhao        |  Solid-liquid coexistence method for melting point calculation |
+| [20_Impact](examples/20_Impact)        | Rui Zhao        |  Impact simulation |
+
 
 
 ## How to run the examples?

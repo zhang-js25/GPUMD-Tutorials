@@ -1,0 +1,344 @@
+#---------------------------------------------------------
+variable  run1    equal  0
+#---------------------------------------------------------
+label  loop1
+variable  len1 index  2     2      #length
+variable  lat1 index  bcc   bcc    #lattice type
+variable  lat2 index  3.2   3.2    #lattice constant
+
+#variable  r0   index  C1    C2     #name
+#variable  r1   index  0     0      #Ag
+#variable  r2   index  0     0      #Al
+#variable  r3   index  0     0      #Au
+#variable  r4   index  0     0      #Cr
+#variable  r5   index  0.7   0.8    #Cu
+#variable  r6   index  0     0      #Mg
+#variable  r7   index  25    24     #Mo
+#variable  r8   index  0     0      #Ni
+#variable  r9   index  0     0      #Pb
+#variable  r10  index  0     0      #Pd
+#variable  r11  index  0     0      #Pt
+#variable  r12  index  29.6  29.6   #Ta
+#variable  r13  index  0     0      #Ti
+#variable  r14  index  17    17.9   #V
+#variable  r15  index  27.7  27.7   #W
+#variable  r16  index  0     0      #Zr
+#---------------------------------------------------------
+variable  r0   index  C1    #name
+variable  r1   index  0     #Ag
+variable  r2   index  0     #Al
+variable  r3   index  0     #Au
+variable  r4   index  0     #Cr
+variable  r5   index  0.7   #Cu
+variable  r6   index  0     #Mg
+variable  r7   index  25    #Mo
+variable  r8   index  0     #Ni
+variable  r9   index  0     #Pb
+variable  r10  index  0     #Pd
+variable  r11  index  0     #Pt
+variable  r12  index  29.6  #Ta
+variable  r13  index  0     #Ti
+variable  r14  index  17    #V
+variable  r15  index  27.7  #W
+variable  r16  index  0     #Zr
+#---------------------------------------------------------
+units             metal
+boundary          p p p
+atom_style        atomic
+atom_modify       map array
+neighbor          1.0  bin
+neigh_modify      every 1 delay 0 check yes
+timestep          0.001
+
+#lattice           ${lat1} ${lat2}
+#region            box  block 0 ${len1} 0 ${len1} 0 ${len1}
+#create_box        16   box
+#create_atoms      1    box
+
+read_data         final.lmp extra/atom/types 15
+Reading data file ...
+  orthogonal box = (0 0 0) to (200 20 20)
+  8 by 1 by 1 MPI processor grid
+  reading atoms ...
+  4975 atoms
+  read_data CPU = 0.013 seconds
+
+mass              1    107.8682   #Ag
+mass              2    26.981538  #Al
+mass              3    196.96655  #Au
+mass              4    51.9961    #Cr
+mass              5    63.546     #Cu
+mass              6    24.3050    #Mg
+mass              7    95.94      #Mo
+mass              8    58.6934    #Ni
+mass              9    207.2      #Pb
+mass              10   106.42     #Pd
+mass              11   195.078    #Pt
+mass              12   180.9479   #Ta
+mass              13   47.867     #Ti
+mass              14   50.9415    #V
+mass              15   183.84     #W
+mass              16   91.224     #Zr
+
+pair_style        nep
+pair_coeff        * *  UNEP-v1-model-with-ZBL.txt Ag Al Au Cr Cu Mg Mo Ni Pb Pd Pt Ta Ti V W Zr
+
+delete_atoms      overlap 1.2 all all
+System init for delete_atoms ...
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7
+  ghost atom cutoff = 7
+  binsize = 3.5, bins = 58 6 6
+  2 neighbor lists, perpetual/occasional/extra = 1 1 0
+  (1) command delete_atoms, occasional, copy from (2)
+      attributes: full, newton on
+      pair build: copy
+      stencil: none
+      bin: none
+  (2) pair nep, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Deleted 96 atoms, new total = 4879
+
+variable          n1   equal  round(atoms*${r1}/100)
+variable          n1   equal  round(atoms*0/100)
+variable          n2   equal  round(atoms*${r2}/100)
+variable          n2   equal  round(atoms*0/100)
+variable          n3   equal  round(atoms*${r3}/100)
+variable          n3   equal  round(atoms*0/100)
+variable          n4   equal  round(atoms*${r4}/100)
+variable          n4   equal  round(atoms*0/100)
+variable          n5   equal  round(atoms*${r5}/100)
+variable          n5   equal  round(atoms*0.7/100)
+variable          n6   equal  round(atoms*${r6}/100)
+variable          n6   equal  round(atoms*0/100)
+variable          n7   equal  round(atoms*${r7}/100)
+variable          n7   equal  round(atoms*25/100)
+variable          n8   equal  round(atoms*${r8}/100)
+variable          n8   equal  round(atoms*0/100)
+variable          n9   equal  round(atoms*${r9}/100)
+variable          n9   equal  round(atoms*0/100)
+variable          n10  equal  round(atoms*${r10}/100)
+variable          n10  equal  round(atoms*0/100)
+variable          n11  equal  round(atoms*${r11}/100)
+variable          n11  equal  round(atoms*0/100)
+variable          n12  equal  round(atoms*${r12}/100)
+variable          n12  equal  round(atoms*29.6/100)
+variable          n13  equal  round(atoms*${r13}/100)
+variable          n13  equal  round(atoms*0/100)
+variable          n14  equal  round(atoms*${r14}/100)
+variable          n14  equal  round(atoms*17/100)
+variable          n15  equal  round(atoms*${r15}/100)
+variable          n15  equal  round(atoms*27.7/100)
+variable          n16  equal  round(atoms*${r16}/100)
+variable          n16  equal  round(atoms*0/100)
+set               type 1 type/subset 2  ${n2}  223936
+set               type 1 type/subset 2  0  223936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 3  ${n3}  323936
+set               type 1 type/subset 3  0  323936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 4  ${n4}  423936
+set               type 1 type/subset 4  0  423936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 5  ${n5}  523936
+set               type 1 type/subset 5  34  523936
+Setting atom values ...
+  34 settings made for type/subset
+set               type 1 type/subset 6  ${n6}  623936
+set               type 1 type/subset 6  0  623936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 7  ${n7}  723936
+set               type 1 type/subset 7  1220  723936
+Setting atom values ...
+  1220 settings made for type/subset
+set               type 1 type/subset 8  ${n8}  823936
+set               type 1 type/subset 8  0  823936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 9  ${n9}  923936
+set               type 1 type/subset 9  0  923936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 10 ${n10} 1023936
+set               type 1 type/subset 10 0 1023936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 11 ${n11} 1123936
+set               type 1 type/subset 11 0 1123936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 12 ${n12} 1223936
+set               type 1 type/subset 12 1444 1223936
+Setting atom values ...
+  1444 settings made for type/subset
+set               type 1 type/subset 13 ${n13} 1323936
+set               type 1 type/subset 13 0 1323936
+Setting atom values ...
+  0 settings made for type/subset
+set               type 1 type/subset 14 ${n14} 1423936
+set               type 1 type/subset 14 829 1423936
+Setting atom values ...
+  829 settings made for type/subset
+set               type 1 type/subset 15 ${n15} 1523936
+set               type 1 type/subset 15 1351 1523936
+Setting atom values ...
+  1351 settings made for type/subset
+set               type 1 type/subset 16 ${n16} 1623936
+set               type 1 type/subset 16 0 1623936
+Setting atom values ...
+  0 settings made for type/subset
+
+set               type 1 type 5
+Setting atom values ...
+  1 settings made for type
+
+group             Ag   type 1
+0 atoms in group Ag
+group             Al   type 2
+0 atoms in group Al
+group             Au   type 3
+0 atoms in group Au
+group             Cr   type 4
+0 atoms in group Cr
+group             Cu   type 5
+35 atoms in group Cu
+group             Mg   type 6
+0 atoms in group Mg
+group             Mo   type 7
+1220 atoms in group Mo
+group             Ni   type 8
+0 atoms in group Ni
+group             Pb   type 9
+0 atoms in group Pb
+group             Pd   type 10
+0 atoms in group Pd
+group             Pt   type 11
+0 atoms in group Pt
+group             Ta   type 12
+1444 atoms in group Ta
+group             Ti   type 13
+0 atoms in group Ti
+group             V    type 14
+829 atoms in group V
+group             W    type 15
+1351 atoms in group W
+group             Zr   type 16
+0 atoms in group Zr
+group             HEA  type 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+4879 atoms in group HEA
+
+variable          N         equal  step
+variable          T         equal  temp
+variable          Etotal    equal  etotal
+variable          PEatom    equal  pe/atoms
+variable          ATOMS     equal  atoms
+
+fix               11 all nve
+run               ${run1}
+run               0
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Your simulation uses code contributions which should be cited:
+
+- Type Label Framework: https://doi.org/10.1021/acs.jpcb.3c08419
+
+@Article{Gissinger24,
+ author = {Jacob R. Gissinger, Ilia Nikiforov, Yaser Afshar, Brendon Waters, Moon-ki Choi, Daniel S. Karls, Alexander Stukowski, Wonpil Im, Hendrik Heinz, Axel Kohlmeyer, and Ellad B. Tadmor},
+ title = {Type Label Framework for Bonded Force Fields in LAMMPS},
+ journal = {J. Phys. Chem. B},
+ year =    2024,
+ volume =  128,
+ number =  13,
+ pages =   {3282–-3297}
+}
+
+CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE-CITE
+
+Neighbor list info ...
+  update: every = 1 steps, delay = 0 steps, check = yes
+  max neighbors/atom: 2000, page size: 100000
+  master list distance cutoff = 7
+  ghost atom cutoff = 7
+  binsize = 3.5, bins = 58 6 6
+  1 neighbor lists, perpetual/occasional/extra = 1 0 0
+  (1) pair nep, perpetual
+      attributes: full, newton on
+      pair build: full/bin/atomonly
+      stencil: full/bin/3d
+      bin: standard
+Per MPI rank memory allocation (min/avg/max) = 3.18 | 3.181 | 3.182 Mbytes
+   Step          Temp          E_pair         E_mol          TotEng         Press     
+         0   0             -47585.966      0             -47585.966      324147.07    
+Loop time of 2.345e-06 on 8 procs for 0 steps with 4879 atoms
+
+117.3% CPU use with 8 MPI tasks x no OpenMP threads
+
+MPI task timing breakdown:
+Section |  min time  |  avg time  |  max time  |%varavg| %total
+---------------------------------------------------------------
+Pair    | 0          | 0          | 0          |   0.0 |  0.00
+Neigh   | 0          | 0          | 0          |   0.0 |  0.00
+Comm    | 0          | 0          | 0          |   0.0 |  0.00
+Output  | 0          | 0          | 0          |   0.0 |  0.00
+Modify  | 0          | 0          | 0          |   0.0 |  0.00
+Other   |            | 2.345e-06  |            |       |100.00
+
+Nlocal:        609.875 ave         630 max         594 min
+Histogram: 2 0 0 3 0 1 0 0 0 2
+Nghost:        2149.25 ave        2194 max        2130 min
+Histogram: 2 3 0 0 2 0 0 0 0 1
+Neighs:              0 ave           0 max           0 min
+Histogram: 8 0 0 0 0 0 0 0 0 0
+FullNghs:      52478.5 ave       55054 max       49943 min
+Histogram: 2 0 0 1 2 0 0 1 0 2
+
+Total # of neighbors = 419828
+Ave neighs/atom = 86.047961
+Neighbor list builds = 0
+Dangerous builds = 0
+unfix             11
+
+reset_timestep    0
+
+write_dump        all custom ./${output}/dump.${r0} element x y z                    modify element Ag Al Au Cr Cu Mg Mo Ni Pb Pd Pt Ta Ti V W Zr sort 1
+write_dump        all custom ./OUT/dump.${r0} element x y z                    modify element Ag Al Au Cr Cu Mg Mo Ni Pb Pd Pt Ta Ti V W Zr sort 1
+write_dump        all custom ./OUT/dump.C1 element x y z                    modify element Ag Al Au Cr Cu Mg Mo Ni Pb Pd Pt Ta Ti V W Zr sort 1
+WARNING: Dump WRITE_DUMP includes no atom IDs and is not sorted by ID. This may complicate post-processing tasks or visualization (../dump.cpp:232)
+#---------------------------------------------------------
+clear
+next  lat1
+next  lat2
+next  len1
+next  r0
+next  r1
+next  r2
+next  r3
+next  r4
+next  r5
+next  r6
+next  r7
+next  r8
+next  r9
+next  r10
+next  r11
+next  r12
+next  r13
+next  r14
+next  r15
+next  r16
+jump  SELF  loop1
+label  break
+clear
+#---------------------------------------------------------
+
+Total wall time: 0:00:00

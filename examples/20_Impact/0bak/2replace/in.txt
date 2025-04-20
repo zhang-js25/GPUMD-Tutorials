@@ -1,0 +1,179 @@
+#---------------------------------------------------------
+clear
+variable  output  string   OUT
+shell     mkdir   ${output}
+log       ./${output}/log.${output}
+#---------------------------------------------------------
+variable  run1    equal  0
+#---------------------------------------------------------
+label  loop1
+variable  len1 index  2     2      #length
+variable  lat1 index  bcc   bcc    #lattice type
+variable  lat2 index  3.2   3.2    #lattice constant
+
+#variable  r0   index  C1    C2     #name
+#variable  r1   index  0     0      #Ag 
+#variable  r2   index  0     0      #Al
+#variable  r3   index  0     0      #Au
+#variable  r4   index  0     0      #Cr
+#variable  r5   index  0.7   0.8    #Cu
+#variable  r6   index  0     0      #Mg
+#variable  r7   index  25    24     #Mo
+#variable  r8   index  0     0      #Ni
+#variable  r9   index  0     0      #Pb
+#variable  r10  index  0     0      #Pd
+#variable  r11  index  0     0      #Pt
+#variable  r12  index  29.6  29.6   #Ta
+#variable  r13  index  0     0      #Ti
+#variable  r14  index  17    17.9   #V
+#variable  r15  index  27.7  27.7   #W
+#variable  r16  index  0     0      #Zr
+#---------------------------------------------------------
+variable  r0   index  C1    #name
+variable  r1   index  0     #Ag 
+variable  r2   index  0     #Al
+variable  r3   index  0     #Au
+variable  r4   index  0     #Cr
+variable  r5   index  0.7   #Cu
+variable  r6   index  0     #Mg
+variable  r7   index  25    #Mo
+variable  r8   index  0     #Ni
+variable  r9   index  0     #Pb
+variable  r10  index  0     #Pd
+variable  r11  index  0     #Pt
+variable  r12  index  29.6  #Ta
+variable  r13  index  0     #Ti
+variable  r14  index  17    #V
+variable  r15  index  27.7  #W
+variable  r16  index  0     #Zr
+#---------------------------------------------------------
+units             metal
+boundary          p p p
+atom_style        atomic
+atom_modify       map array
+neighbor          1.0  bin 
+neigh_modify      every 1 delay 0 check yes
+timestep          0.001
+
+#lattice           ${lat1} ${lat2}
+#region            box  block 0 ${len1} 0 ${len1} 0 ${len1}
+#create_box        16   box
+#create_atoms      1    box
+
+read_data         final.lmp extra/atom/types 15
+
+mass              1    107.8682   #Ag 
+mass              2    26.981538  #Al
+mass              3    196.96655  #Au
+mass              4    51.9961    #Cr
+mass              5    63.546     #Cu
+mass              6    24.3050    #Mg
+mass              7    95.94      #Mo
+mass              8    58.6934    #Ni
+mass              9    207.2      #Pb
+mass              10   106.42     #Pd
+mass              11   195.078    #Pt
+mass              12   180.9479   #Ta
+mass              13   47.867     #Ti
+mass              14   50.9415    #V
+mass              15   183.84     #W
+mass              16   91.224     #Zr
+
+pair_style        nep
+pair_coeff        * *  UNEP-v1-model-with-ZBL.txt Ag Al Au Cr Cu Mg Mo Ni Pb Pd Pt Ta Ti V W Zr
+
+delete_atoms      overlap 1.2 all all
+
+variable          n1   equal  round(atoms*${r1}/100)
+variable          n2   equal  round(atoms*${r2}/100)
+variable          n3   equal  round(atoms*${r3}/100)
+variable          n4   equal  round(atoms*${r4}/100)
+variable          n5   equal  round(atoms*${r5}/100)
+variable          n6   equal  round(atoms*${r6}/100)
+variable          n7   equal  round(atoms*${r7}/100)
+variable          n8   equal  round(atoms*${r8}/100)
+variable          n9   equal  round(atoms*${r9}/100)
+variable          n10  equal  round(atoms*${r10}/100)
+variable          n11  equal  round(atoms*${r11}/100)
+variable          n12  equal  round(atoms*${r12}/100)
+variable          n13  equal  round(atoms*${r13}/100)
+variable          n14  equal  round(atoms*${r14}/100)
+variable          n15  equal  round(atoms*${r15}/100)
+variable          n16  equal  round(atoms*${r16}/100)
+set               type 1 type/subset 2  ${n2}  223936
+set               type 1 type/subset 3  ${n3}  323936
+set               type 1 type/subset 4  ${n4}  423936
+set               type 1 type/subset 5  ${n5}  523936
+set               type 1 type/subset 6  ${n6}  623936
+set               type 1 type/subset 7  ${n7}  723936
+set               type 1 type/subset 8  ${n8}  823936
+set               type 1 type/subset 9  ${n9}  923936
+set               type 1 type/subset 10 ${n10} 1023936
+set               type 1 type/subset 11 ${n11} 1123936
+set               type 1 type/subset 12 ${n12} 1223936
+set               type 1 type/subset 13 ${n13} 1323936
+set               type 1 type/subset 14 ${n14} 1423936
+set               type 1 type/subset 15 ${n15} 1523936
+set               type 1 type/subset 16 ${n16} 1623936
+
+set               type 1 type 5
+
+group             Ag   type 1
+group             Al   type 2
+group             Au   type 3
+group             Cr   type 4
+group             Cu   type 5
+group             Mg   type 6
+group             Mo   type 7
+group             Ni   type 8
+group             Pb   type 9
+group             Pd   type 10
+group             Pt   type 11
+group             Ta   type 12
+group             Ti   type 13
+group             V    type 14
+group             W    type 15
+group             Zr   type 16
+group             HEA  type 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+
+variable          N         equal  step
+variable          T         equal  temp
+variable          Etotal    equal  etotal
+variable          PEatom    equal  pe/atoms
+variable          ATOMS     equal  atoms
+
+fix               11 all nve
+run               ${run1}
+unfix             11
+
+reset_timestep    0
+
+write_dump        all custom ./${output}/dump.${r0} element x y z  &
+                  modify element Ag Al Au Cr Cu Mg Mo Ni Pb Pd Pt Ta Ti V W Zr sort 1
+#---------------------------------------------------------
+clear
+next  lat1
+next  lat2
+next  len1
+next  r0
+next  r1
+next  r2
+next  r3
+next  r4
+next  r5
+next  r6
+next  r7
+next  r8
+next  r9
+next  r10
+next  r11
+next  r12
+next  r13
+next  r14
+next  r15
+next  r16
+jump  SELF  loop1
+label  break
+clear
+#---------------------------------------------------------
+

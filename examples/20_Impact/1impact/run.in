@@ -1,0 +1,41 @@
+# impact
+# 1. The dimension in the impact direction must be sufficiently long to avoid influencing the structure 
+#    at the far end from the impact.
+# 2. group method 0, have 2 groups
+#    group 0 is newton system
+#    group 1 is piston
+# 3. (1) set pbc="F T T", i.e., non-periodic in x direction.
+#    (2) group=1, mass=1e10, other group is normal.
+#    (3) model.xyz (from line 1 to line 4):
+#        4879
+#        Lattice="200.0 0.0 0.0 0.0 20.0 0.0 0.0 0.0 20.0" Properties=species:S:1:pos:R:3:mass:R:1:group:I:1 pbc="F T T"
+#        W 0.01418 11.0768 10.9113 1E10 1
+#        Mo 0.03992 12.8882 13.5248 1E10 1
+#        ......
+
+potential    UNEP-v1-model-with-ZBL.txt
+velocity     300
+time_step    1
+
+# output the 1st frame
+ensemble     nve
+dump_thermo  1
+dump_exyz    1 0 0
+time_step    0
+run          1
+
+# relax
+ensemble     nvt_ber 300 300 100
+dump_thermo  100000
+dump_exyz    100000 0 0
+time_step    1
+run          100000
+
+# impact 10 ps
+# 1e20 means: does not control temperature, i.e. NVE
+ensemble     nvt_ber 300 300 1e20
+move         1 0.01 0 0  #vx=1km/s=0.01A/fs
+dump_thermo  100
+dump_exyz    500 0 0
+dump_restart 10000
+run          10000

@@ -1,0 +1,2 @@
+box 200 20 20   #cell size
+random 3          #random grain
