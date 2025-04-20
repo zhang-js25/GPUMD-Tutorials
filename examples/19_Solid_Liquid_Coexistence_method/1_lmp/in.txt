@@ -1,0 +1,92 @@
+#---------------------------------------------------------
+#  1. initial SLC strcture (SLC = Solid Liquid Coexistence)
+#---------------------------------------------------------
+clear
+label  loop1
+variable  e    index  PdCuNiP  PdNiP  Pd   Cu   Ni   P
+variable  rPd  index  0.4      0.4    1.0  0.0  0.0  0.0
+variable  rCu  index  0.3      0.0    0.0  1.0  0.0  0.0
+variable  rNi  index  0.1      0.4    0.0  0.0  1.0  0.0
+variable  rP   index  0.2      0.2    0.0  0.0  0.0  1.0
+variable  T1   index  300      300    500  300  500  250
+variable  T2   index  1500     1500   2300 2000 2300 450
+
+variable          run1    equal  0  #500000
+#---------------------------------------------------------
+units             metal
+boundary          p p p
+atom_style        atomic
+atom_modify       map array
+neighbor          1.0  bin
+neigh_modify      every 1 delay 0 check yes
+timestep          0.001 
+
+lattice           fcc  3.7
+region            box  block 0 13 0 13 0 25
+create_box        4    box
+create_atoms      1    box
+variable          nPd  equal  round(atoms*${rPd})
+variable          nCu  equal  round(atoms*${rCu})
+variable          nNi  equal  round(atoms*${rNi})
+variable          nP   equal  round(atoms*${rP})
+set               type 1 type/subset 1 ${nPd} 1234567
+set               type 1 type/subset 2 ${nCu} 2234567
+set               type 1 type/subset 3 ${nNi} 3234567
+set               type 1 type/subset 4 ${nP}  4234567
+
+variable          zmid equal  zlo+lz/2.0-0.5
+region            low  block  INF INF INF INF INF ${zmid} units box
+region            up1  block  INF INF INF INF INF ${zmid} units box side out
+region            up   intersect 2 box up1
+
+group             low  region low
+group             up   region up
+group             Pd   type 1
+group             Cu   type 2
+group             Ni   type 3
+group             P    type 4
+group             MEA  type 1 2 3 4
+
+mass		  1    106.42 
+mass		  2    63.546 
+mass		  3    58.693 
+mass		  4    30.974 
+
+pair_style        nep
+pair_coeff        * *  nep.txt Pd Cu Ni P
+
+velocity          all create ${T1} 12345678 dist gaussian
+
+variable          N         equal  step
+variable          T         equal  temp
+variable          PEatom    equal  pe/atoms
+variable          PE        equal  pe
+variable          KEatom    equal  ke/atoms
+variable          KE        equal  ke
+variable          Eatom     equal  etotal/atoms
+variable          Etotal    equal  etotal
+variable          Press     equal  press
+variable          Vol       equal  vol
+variable          LZ        equal  lz
+variable          Atoms     equal  atoms
+
+variable          gN        atom   gmask(up)
+#---------------------------------------------------------
+fix               1 all nve 
+run               0
+unfix             1
+
+write_dump        all custom dump.${e} element x y z vx vy vz v_gN modify element Pd Cu Ni P sort 1
+#---------------------------------------------------------
+clear
+next  e
+next  rPd
+next  rCu
+next  rNi
+next  rP
+next  T1
+next  T2
+jump  SELF  loop1
+label  break
+clear
+#---------------------------------------------------------

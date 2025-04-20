@@ -1,0 +1,22 @@
+# Pd MeltingPoint
+# (Tm: Pd=1828.1K, Cu=1357.8K, Ni=1728.0K, P=317.3K.)
+
+potential       ../../0bak/nep.txt
+velocity        500
+time_step       1
+
+#initial structure (relax T1)
+ensemble        npt_scr 500 500 100 0 200 1000
+fix             1
+dump_thermo     1000
+dump_exyz       100000 0 0
+dump_restart    100000
+run             1000000
+
+#initial structure (relax T2)
+ensemble        npt_scr 2000 2000 100 0 200 1000
+fix             0
+dump_thermo     1000
+dump_exyz       100000 0 0
+dump_restart    100000
+run             1000000
