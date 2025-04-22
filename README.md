@@ -28,6 +28,7 @@ This repo contains various tutorials and examples using the [GPUMD package](http
 | [20_Impact](examples/20_Impact)        | Rui Zhao        |  Impact simulation |
 | [21_Fatigue](examples/21_Fatigue)        | Rui Zhao        | Fatigue simulation |
 | [22_Gas_Solid](examples/22_Gas_Solid)        | Shuo Zhang        | Gas-Solid simulation |
+| [23_Surface_Reconstruction](examples/23_Surface_Reconstruction)        | Cheng Qian        | Pt surface reconstruction simulation |
 
 
 
