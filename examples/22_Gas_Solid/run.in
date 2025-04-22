@@ -1,0 +1,15 @@
+potential			lj_Ar_C.txt
+velocity				300
+
+minimize			sd -1 100
+
+ensemble			nvt_lan 300.0 300.0 5000.0
+fix					0
+time_step			1
+dump_position		1000
+dump_thermo		1000
+dump_force			1000
+dump_velocity		1000 group 0 1
+compute			0 1 1000 temperature
+dump_restart		1000
+run					30000
