@@ -1,0 +1,188 @@
+
+***************************************************************
+*                 Welcome to use GPUMD                        *
+*     (Graphics Processing Units Molecular Dynamics)          *
+*               Master version after 3.9.5                    *
+*              This is the gpumd executable                   *
+***************************************************************
+
+
+---------------------------------------------------------------
+Compiling options:
+---------------------------------------------------------------
+
+DEBUG is off: Use different PRNG seeds for different runs.
+
+---------------------------------------------------------------
+GPU information:
+---------------------------------------------------------------
+
+number of GPUs = 1
+Device id:                   0
+    Device name:             NVIDIA GeForce RTX 2080 Ti
+    Compute capability:      7.5
+    Amount of global memory: 10.7534 GB
+    Number of SMs:           68
+
+---------------------------------------------------------------
+Started running GPUMD.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Started initializing positions and related parameters.
+---------------------------------------------------------------
+
+Number of atoms is 12288.
+Use periodic boundary conditions along x.
+Use periodic boundary conditions along y.
+Use periodic boundary conditions along z.
+Use orthogonal box.
+Box lengths are
+    Lx =     5.2295023750e+01 A
+    Ly =     5.2289709620e+01 A
+    Lz =     5.2278944770e+01 A
+Do not specify initial velocities here.
+Have 1 grouping method(s).
+There are 4 groups of atoms in grouping method 0.
+    3584 atoms in group 0.
+    1536 atoms in group 1.
+    1024 atoms in group 2.
+    6144 atoms in group 3.
+There are 4 atom types.
+    3584 atoms of type 0.
+    1536 atoms of type 1.
+    1024 atoms of type 2.
+    6144 atoms of type 3.
+Initialized velocities with default T = 300 K.
+
+---------------------------------------------------------------
+Finished initializing positions and related parameters.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Started executing the commands in run.in.
+---------------------------------------------------------------
+
+Use the NEP4 potential with 4 atom types.
+    type 0 (Li with Z = 3).
+    type 1 (La with Z = 57).
+    type 2 (Zr with Z = 40).
+    type 3 (O with Z = 8).
+    has the universal ZBL with inner cutoff 0.9 A and outer cutoff 1.8 A.
+    radial cutoff = 6 A.
+    angular cutoff = 4 A.
+    MN_radial = 95.
+    MN_angular = 29.
+    enlarged MN_radial = 119.
+    enlarged MN_angular = 37.
+    n_max_radial = 4.
+    n_max_angular = 4.
+    basis_size_radial = 8.
+    basis_size_angular = 8.
+    l_max_3body = 4.
+    l_max_4body = 2.
+    l_max_5body = 0.
+    ANN = 30-30-1.
+    number of neural network parameters = 3841.
+    number of descriptor parameters = 1440.
+    total number of parameters = 5281.
+Initialized velocities with input T = 1000 K.
+Use Nose-Hoover thermostat and Parrinello-Rahman barostat.
+Use NPT ensemble for this run.
+Thermostat: t_start is 1000.000000, t_stop is 1000.000000, t_period is 100.000000 timesteps
+xx : p_start is 0.000000, p_stop is 0.000000, p_period is 1000.000000 timesteps
+xy will not be changed.
+xz will not be changed.
+yx will not be changed.
+yy : p_start is 0.000000, p_stop is 0.000000, p_period is 1000.000000 timesteps
+yz will not be changed.
+zx will not be changed.
+zy will not be changed.
+zz : p_start is 0.000000, p_stop is 0.000000, p_period is 1000.000000 timesteps
+Run 50000 steps.
+MTTK initializing...
+    5000 steps completed.
+    10000 steps completed.
+    15000 steps completed.
+    20000 steps completed.
+    25000 steps completed.
+    30000 steps completed.
+    35000 steps completed.
+    40000 steps completed.
+    45000 steps completed.
+    50000 steps completed.
+
+---------------------------------------------------------------
+Time used for this run = 145.846 second.
+Speed of this run = 4.21266e+06 atom*step/second.
+---------------------------------------------------------------
+
+Use Nose-Hoover thermostat and Parrinello-Rahman barostat.
+Use NPT ensemble for this run.
+Thermostat: t_start is 1000.000000, t_stop is 1000.000000, t_period is 100.000000 timesteps
+xx : p_start is 0.000000, p_stop is 0.000000, p_period is 1000.000000 timesteps
+xy will not be changed.
+xz will not be changed.
+yx will not be changed.
+yy : p_start is 0.000000, p_stop is 0.000000, p_period is 1000.000000 timesteps
+yz will not be changed.
+zx will not be changed.
+zy will not be changed.
+zz : p_start is 0.000000, p_stop is 0.000000, p_period is 1000.000000 timesteps
+Compute radial distribution function (RDF).
+    radial cutoff 6.
+    radial cutoff will be divided into 400 bins.
+    RDF sample interval is 1000 step.
+Compute self diffusion coefficient (SDC).
+    sample interval is 10.
+    number of correlation steps is 5000.
+    grouping method is 0 and group ID is 0.
+Compute mean square displacement (MSD).
+    sample interval is 10.
+    number of correlation steps is 5000.
+    grouping method is 0 and group ID is 0.
+Dump thermo every 100 steps.
+Dump extended XYZ.
+    every 1000000 steps.
+Dump restart every 1000000 steps.
+
+---------------------------------------------------------------
+Warning: Starting from GPUMD-v3.4, the velocity data in restart.xyz will be in units of Angstrom/fs
+         Previously they are in units of 1/1.018051e+1 Angstrom/fs.
+---------------------------------------------------------------
+
+Run 1000000 steps.
+MTTK initializing...
+    100000 steps completed.
+    200000 steps completed.
+    300000 steps completed.
+    400000 steps completed.
+    500000 steps completed.
+    600000 steps completed.
+    700000 steps completed.
+    800000 steps completed.
+    900000 steps completed.
+    1000000 steps completed.
+
+---------------------------------------------------------------
+Time used for this run = 3594.81 second.
+Speed of this run = 3.41826e+06 atom*step/second.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Finished executing the commands in run.in.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Time used = 3741.342282 s.
+---------------------------------------------------------------
+
+
+---------------------------------------------------------------
+Finished running GPUMD.
+---------------------------------------------------------------
+
