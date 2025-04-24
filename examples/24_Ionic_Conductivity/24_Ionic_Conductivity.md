@@ -14,7 +14,7 @@ To follow this tutorial, you will need the following:
 - **Input Structure**: `model.xyz` file for the cubic LLZO (c-LLZO).
 - **Potential File**: a well-trained NEP (`nep.txt`) for the c-LLZO system. 
 
-In this tutorial, I provide the `NEP25-ZBL` model trained in our previous work [1], which is a NEP trained with only 25 configurations and successfully describes various properties of LLZO, including phase transitions, atomic local environments, and ionic diffusion properties. For more details, refer to [arXiv:2504.15925]([ https://doi.org/10.48550/arXiv.2504.15925](https://doi.org/10.48550/arXiv.2504.15925)).
+In this tutorial, I provide the `NEP25-ZBL` model trained in our previous work [1], which is a NEP trained with only 25 configurations and successfully describes various properties of LLZO, including phase transitions, atomic local environments, and ionic diffusion properties. For more details, refer to [SourceFiles]([zhyan0603/SourceFiles: Source Files of My Publications](https://github.com/zhyan0603/SourceFiles)) and [arXiv:2504.15925]([ https://doi.org/10.48550/arXiv.2504.15925](https://doi.org/10.48550/arXiv.2504.15925)).
 
 ### Step 1: Simulation Setup
 
