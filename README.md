@@ -29,7 +29,8 @@ This repo contains various tutorials and examples using the [GPUMD package](http
 | [21_Fatigue](examples/21_Fatigue)        | Rui Zhao        | Fatigue simulation |
 | [22_Gas_Solid](examples/22_Gas_Solid)        | Shuo Zhang        | Gas-Solid simulation |
 | [23_Surface_Reconstruction](examples/23_Surface_Reconstruction)        | Cheng Qian        | Pt surface reconstruction simulation |
-| [24 Ionic Conductivity](examples/24_Ionic_Conductivity) | Zihan Yan | Ionic conductivity of cubic Li<sub>7</sub>La<sub>3</sub>Zr<sub>2</sub>O<sub>12</sub> |
+| [24_Ionic_Conductivity](examples/24_Ionic_Conductivity) | Zihan Yan | Ionic conductivity of cubic Li<sub>7</sub>La<sub>3</sub>Zr<sub>2</sub>O<sub>12</sub> |
+| [25_lattice_dynamics_kappa](examples/25_lattice_dynamics_kappa) | Zezhu Zeng | Lattice dynamics for PbTe |
 
 
 
